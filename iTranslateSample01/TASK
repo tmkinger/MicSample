@@ -1,0 +1,26 @@
+Setze das UI aus Design.sketch um
+
+Ein Microphone Button soll eine Audio-Aufnahme Triggern und nach erneutem Tap die Aufnahme beenden. Permission Abfrage wie im Design berücksichtigen. 
+Bei einem Tap auf „Recordings“ soll sich ein ModalViewController öffnen, der es zulässt die Recordings zu löschen. Durch Tap auf die Zelle können die Recordings natürlich auch abgespielt werden.
+
+- Generelle Guideline: Weniger Code, Weniger Bugs, also so viel wie möglich im Storyboard lösen
+- Keine Explicit Unwraps im Production Code (in den Tests ok)
+- Tests, Tests, Tests: Teste auch ViewModel. Schreibe Unit-Tests. Schreibe den Code so, dass er testbar ist.
+- Versuche kompakte/moderne Swift-Schreibweisen und halte dich an die Guides in  README.md
+- Beweise Kreativität mit Animationen?
+- Latest Xcode
+
+
+ENGLISH
+
+Create the UI from Design.sketch
+
+A Microphone Button should trigger an audio recording and after another tap stop the recording. Permission query as in design.
+A tap on "Recordings" should open a ModalViewController, which allows to delete the recordings. Of course the recordings can also be played by tapping on the cell.
+
+- General Guideline: Less Code, Less Bugs, so solve as much as possible in the storyboard
+- No Explicit Unwraps in the Production Code (ok in the tests)
+- Tests, Tests, Tests: Try ViewModel too. Write unit tests. Write the code so that it is testable.
+- Try compact / modern Swift spellings and stick to the guides in README.md
+- Prove creativity with animations?
+- Latest Xcode
