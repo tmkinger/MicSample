@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import AVKit
 
-class RecordingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RecordingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate {
     
     @IBOutlet weak var recordingsTableView: UITableView?
     var recordingsListModel = RecordingsListViewModel()
+    
+    var previousAudioSelectedIndexPath: IndexPath!
+    var audioPlayer: AVAudioPlayer?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,37 +25,12 @@ class RecordingsViewController: UIViewController, UITableViewDelegate, UITableVi
 
         // Do any additional setup after loading the view.
         self.navigationController?.isNavigationBarHidden = false
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        animateTable()
+        RecorderUtility.animateTable(recordingsTableView)
     }
-    
-    func animateTable() {
-        recordingsTableView?.reloadData()
-            
-        let cells = recordingsTableView?.visibleCells
-        let tableHeight: CGFloat = recordingsTableView?.bounds.size.height ?? 0
-            
-        for i in cells ?? [] {
-            let cell: UITableViewCell = i as UITableViewCell
-            cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
-        }
-            
-        var index = 0
-            
-        for a in cells ?? [] {
-            let cell: UITableViewCell = a as UITableViewCell
-             
-            UIView.animate(withDuration: 1.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .allowAnimatedContent, animations: {
-                cell.transform = CGAffineTransform(translationX: 0, y: 0)
-            }, completion: nil)
-                
-            index += 1
-        }
-    }
-    
+        
     func loadDataSource() {
         self.recordingsListModel.createRecordingsViewModel()
     }
@@ -69,14 +49,23 @@ class RecordingsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let previousIndexPath = previousAudioSelectedIndexPath, indexPath != previousAudioSelectedIndexPath, let cell = tableView.cellForRow(at: previousIndexPath) as? RecordingsTableViewCell {
+            cell.progressViewWidth.constant = 0
+        }
         if let cell = tableView.cellForRow(at: indexPath) as? RecordingsTableViewCell, let recordsModel = self.recordingsListModel.recordingsViewModels?[indexPath.row] {
+            if indexPath == previousAudioSelectedIndexPath {
+                cell.layer.removeAllAnimations()
+                cell.progressViewWidth.constant = 0
+            }
             cell.startProgress(recordsModel)
+            playSound(index: indexPath.row)
+            previousAudioSelectedIndexPath = indexPath
         }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection
                             section: Int) -> String? {
-        return "RECENTLY USED"
+        return self.recordingsListModel.recordingsViewModels?.count ?? 0 > 0 ? "RECENTLY USED" : "No Recordings available"
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -94,6 +83,7 @@ class RecordingsViewController: UIViewController, UITableViewDelegate, UITableVi
                     tableView.deleteRows(at: [indexPath], with: .fade)
                     tableView.endUpdates()
                 }
+                tableView.reloadData()
                 completionHandler(true)
             })
         action.image = UIImage(named: "DeleteButton")
@@ -104,18 +94,36 @@ class RecordingsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func doneButtonAction(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func playSound(index: Int) {
+        
+        if audioPlayer != nil, (audioPlayer?.isPlaying)! {
+            audioPlayer?.pause()
+            audioPlayer = nil
+        }
+        
+        if let recordModel = self.recordingsListModel.recordingsViewModels?[index], let fileName = recordModel.recordingName {
+            let audioFilename = RecorderUtility.getDocumentsDirectory()?.appendingPathComponent("\(fileName).caf")
+            guard let url = audioFilename else { return }
+            
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+                try AVAudioSession.sharedInstance().setActive(true)
+                
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                
+                guard let player = audioPlayer else { return }
+                
+                player.prepareToPlay()
+                player.play()
+                player.delegate = self
+                
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
     }
-    */
 
 }

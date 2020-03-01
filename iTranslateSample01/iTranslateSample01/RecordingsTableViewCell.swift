@@ -20,12 +20,6 @@ class RecordingsTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-    
     public func setRecordingData(_ recordsModel: RecordingsViewModel) {
         self.recordingNumberLabel?.text = recordsModel.recordingName
         self.recordingTimeButton?.setTitle(recordsModel.trackTime, for: .normal)
@@ -39,7 +33,7 @@ class RecordingsTableViewCell: UITableViewCell {
             self.layoutIfNeeded()
         }, completion: {_ in
             self.progressViewWidth.constant = 0
-//            self.setSelected(false, animated: false)
+            self.setSelected(false, animated: false)
         })
     }
 }

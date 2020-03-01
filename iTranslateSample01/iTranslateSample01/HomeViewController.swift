@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import QuartzCore
 
-class HomeViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
+class HomeViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBOutlet weak var micButton: UIButton!
     @IBOutlet weak var showRecordingsButton: UIButton!
@@ -153,7 +153,9 @@ class HomeViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlay
         audioRecorder = nil
 
         if success {
-            playSound()
+            let alert = UIAlertController.init(title: "Saved", message: "Recording Saved!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
         } else {
             // recording failed :(
         }
@@ -165,38 +167,17 @@ class HomeViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlay
         }
     }
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//     In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-
-    func playSound() {
-        
-        let newFileNumber = RecorderUtility.getLastFileIndex()
-        let audioFilename = RecorderUtility.getDocumentsDirectory()?.appendingPathComponent("Record \(newFileNumber).caf")
-        guard let url = audioFilename else { return }
-
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-
-            player = try AVAudioPlayer(contentsOf: url)
-
-            guard let player = player else { return }
-            
-            player.prepareToPlay()
-            player.play()
-            player.delegate = self
-
-        } catch let error {
-            print(error.localizedDescription)
+//         Get the new view controller using segue.destination.
+//         Pass the selected object to the new view controller.
+        if audioRecorder != nil {
+            self.micButton.blink(enabled: false)
+            finishRecording(success: false)
         }
     }
-
+    
 }

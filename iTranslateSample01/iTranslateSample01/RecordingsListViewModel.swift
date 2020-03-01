@@ -18,7 +18,7 @@ class RecordingsListViewModel: NSObject {
     }
     
     func createRecordingsViewModel(){
-        if let fileNameArray = self.fetchFileNames(), fileNameArray.count > 0 {
+        if let fileNameArray = RecorderUtility.fetchFileNames(), fileNameArray.count > 0 {
             for fileName in fileNameArray {
                 let recordingListModel = RecordingsViewModel(recordingName: fileName)
                 (recordingListModel.trackTime, recordingListModel.trackDurationInSeconds) = self.fetchTrackDuration(fileName: fileName)
@@ -53,11 +53,6 @@ class RecordingsListViewModel: NSObject {
             print("Error")
         }
         return false
-    }
-    
-    func getDocumentsDirectory() -> URL? {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
     }
     
     func fetchTrackDuration(fileName: String?) -> (String?, Int) {
@@ -105,35 +100,6 @@ class RecordingsListViewModel: NSObject {
     
     func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
       return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
-    }
-    
-    func fetchFileNames() -> [String]? {
-        let fileManager = FileManager.default
-        if let documentsURL = getDocumentsDirectory() {
-            do {
-                // Get the directory contents urls (including subfolders urls)
-                let directoryContents = try fileManager.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil)
-                print(directoryContents)
-
-                // if you want to filter the directory contents you can do like this:
-                let cafFiles = directoryContents.filter{ $0.pathExtension == "caf" }
-                var cafFileNames = cafFiles.map{ $0.deletingPathExtension().lastPathComponent }
-                cafFileNames.sort{$0.localizedStandardCompare($1) == .orderedAscending}
-                return cafFileNames
-            } catch {
-                print("Error while enumerating files \(documentsURL.path): \(error.localizedDescription)")
-            }
-
-        }
-        return []
-    }
-    
-    func getLastFileIndex() -> Int {
-        var lastFileIndex = 0
-        if let fileNames = self.fetchFileNames(), let lastFileName = fileNames.last, let fileNumber = lastFileName.components(separatedBy: " ").last {
-            lastFileIndex = Int(fileNumber) ?? 0
-        }
-        return lastFileIndex
     }
 
 }
