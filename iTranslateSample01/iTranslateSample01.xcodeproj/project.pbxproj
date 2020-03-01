@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B571B291240A40A300D36558 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571B290240A40A300D36558 /* HomeViewController.swift */; };
+		B5A746BE240A4C4000573824 /* RecordingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A746BD240A4C4000573824 /* RecordingsTableViewCell.swift */; };
+		B5A746C0240A4F7100573824 /* RecordingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A746BF240A4F7100573824 /* RecordingsViewController.swift */; };
+		B5A746C4240ABEE100573824 /* RecordingsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A746C3240ABEE100573824 /* RecordingsListViewModel.swift */; };
+		B5A746C6240B9AB500573824 /* RecorderUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A746C5240B9AB500573824 /* RecorderUtility.swift */; };
 		D2D777CB22CDCC1100427FC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D777CA22CDCC1100427FC0 /* AppDelegate.swift */; };
-		D2D777CD22CDCC1100427FC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D777CC22CDCC1100427FC0 /* ViewController.swift */; };
 		D2D777D022CDCC1100427FC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D777CE22CDCC1100427FC0 /* Main.storyboard */; };
 		D2D777D222CDCC1200427FC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2D777D122CDCC1200427FC0 /* Assets.xcassets */; };
 		D2D777D522CDCC1200427FC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D777D322CDCC1200427FC0 /* LaunchScreen.storyboard */; };
@@ -35,9 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B571B290240A40A300D36558 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B5A746BD240A4C4000573824 /* RecordingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsTableViewCell.swift; sourceTree = "<group>"; };
+		B5A746BF240A4F7100573824 /* RecordingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsViewController.swift; sourceTree = "<group>"; };
+		B5A746C3240ABEE100573824 /* RecordingsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsListViewModel.swift; sourceTree = "<group>"; };
+		B5A746C5240B9AB500573824 /* RecorderUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderUtility.swift; sourceTree = "<group>"; };
 		D2D777C722CDCC1100427FC0 /* iTranslateSample01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTranslateSample01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2D777CA22CDCC1100427FC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D2D777CC22CDCC1100427FC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D2D777CF22CDCC1100427FC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2D777D122CDCC1200427FC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2D777D422CDCC1200427FC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -100,12 +108,16 @@
 			isa = PBXGroup;
 			children = (
 				D2D777CA22CDCC1100427FC0 /* AppDelegate.swift */,
-				D2D777CC22CDCC1100427FC0 /* ViewController.swift */,
 				D2D777CE22CDCC1100427FC0 /* Main.storyboard */,
 				D2D777D122CDCC1200427FC0 /* Assets.xcassets */,
 				D2D777D322CDCC1200427FC0 /* LaunchScreen.storyboard */,
 				D2D777D622CDCC1200427FC0 /* Info.plist */,
 				D2D777F822CDCC8100427FC0 /* ViewModel.swift */,
+				B571B290240A40A300D36558 /* HomeViewController.swift */,
+				B5A746BD240A4C4000573824 /* RecordingsTableViewCell.swift */,
+				B5A746BF240A4F7100573824 /* RecordingsViewController.swift */,
+				B5A746C3240ABEE100573824 /* RecordingsListViewModel.swift */,
+				B5A746C5240B9AB500573824 /* RecorderUtility.swift */,
 			);
 			path = iTranslateSample01;
 			sourceTree = "<group>";
@@ -259,9 +271,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2D777CD22CDCC1100427FC0 /* ViewController.swift in Sources */,
+				B571B291240A40A300D36558 /* HomeViewController.swift in Sources */,
 				D2D777F922CDCC8100427FC0 /* ViewModel.swift in Sources */,
+				B5A746C0240A4F7100573824 /* RecordingsViewController.swift in Sources */,
+				B5A746C4240ABEE100573824 /* RecordingsListViewModel.swift in Sources */,
+				B5A746C6240B9AB500573824 /* RecorderUtility.swift in Sources */,
 				D2D777CB22CDCC1100427FC0 /* AppDelegate.swift in Sources */,
+				B5A746BE240A4C4000573824 /* RecordingsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,18 +454,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = FD2Y87AU5T;
 				INFOPLIST_FILE = iTranslateSample01/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.itranslate.iTranslateSample01;
+				PRODUCT_BUNDLE_IDENTIFIER = com.photon.iTranslateSample01;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -459,18 +475,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = FD2Y87AU5T;
 				INFOPLIST_FILE = iTranslateSample01/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.itranslate.iTranslateSample01;
+				PRODUCT_BUNDLE_IDENTIFIER = com.photon.iTranslateSample01;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
