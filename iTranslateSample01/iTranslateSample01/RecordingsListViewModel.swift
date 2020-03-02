@@ -9,29 +9,55 @@
 import UIKit
 import AVKit
 
+/// RecordingsViewModel to store data pertaining to the audio file
+class RecordingsViewModel: NSObject {
+    
+    /// Name of the audio file
+    public var recordingName: String?
+    
+    /// the duration of the audio file as a formatted string
+    public var trackTime: String?
+    
+    /// the duration of the audio file in seconds
+    public var trackDurationInSeconds: Int
+    
+    /// Custom init method for the viewModel based on the file name
+    /// - Parameter recordingName: file name of the audio file
+    init(recordingName :String) {
+        self.recordingName = recordingName
+        self.trackDurationInSeconds = 0
+    }
+}
+
+/// RecordingsListViewModel class to populate the viewModel for the records table view
 class RecordingsListViewModel: NSObject {
     
-    private(set) var recordingsViewModels :[RecordingsViewModel]? = [RecordingsViewModel]()
+    /// An array of RecordingsViewModel objects pertaining to the stored recorded audios
+    private(set) var recordingsViewModelsArray :[RecordingsViewModel]? = [RecordingsViewModel]()
     
+    /// Override init
     override init() {
         super.init()
     }
     
+    /// Method to create the RecordingsViewModel viewModel
     func createRecordingsViewModel(){
         if let fileNameArray = RecorderUtility.fetchFileNames(), fileNameArray.count > 0 {
             for fileName in fileNameArray {
                 let recordingListModel = RecordingsViewModel(recordingName: fileName)
                 (recordingListModel.trackTime, recordingListModel.trackDurationInSeconds) = self.fetchTrackDuration(fileName: fileName)
-                self.recordingsViewModels?.append(recordingListModel)
+                self.recordingsViewModelsArray?.append(recordingListModel)
             }
         }
     }
     
+    /// Method to delete the recording model from the viewModel and the recorded file file from the device
+    /// - Parameter recordingModel: RecordingsViewModel object
     func removeRecording(_ recordingModel: RecordingsViewModel?) -> Bool {
         if let fileName = recordingModel?.recordingName {
             if delete(fileName: fileName) {
-                if let model = recordingModel, let index = self.recordingsViewModels?.firstIndex(of: model) {
-                    self.recordingsViewModels?.remove(at: index)
+                if let model = recordingModel, let index = self.recordingsViewModelsArray?.firstIndex(of: model) {
+                    self.recordingsViewModelsArray?.remove(at: index)
                     return true
                 }
             }
@@ -40,13 +66,14 @@ class RecordingsListViewModel: NSObject {
     }
 
     
+    /// Method to delete the audio file based on the file name
+    /// - Parameter fileName: file name of the audio file
     func delete(fileName : String)->Bool{
         let fileManager = FileManager.default
         let docDir = try! fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let filePath = docDir.appendingPathComponent(fileName).appendingPathExtension("caf")
         do {
             try fileManager.removeItem(at: filePath)
-            print("File deleted")
             return true
         }
         catch {
@@ -55,6 +82,8 @@ class RecordingsListViewModel: NSObject {
         return false
     }
     
+    /// Method to format and form the track duration string to be displayed in the table cell
+    /// - Parameter fileName: filename of the audio file
     func fetchTrackDuration(fileName: String?) -> (String?, Int) {
             let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
             let url = NSURL(fileURLWithPath: path)
@@ -76,6 +105,11 @@ class RecordingsListViewModel: NSObject {
         return ("",0)
     }
     
+    /// Method to format the track's duration based on input in hours, minutes and seconds
+    /// - Parameters:
+    ///   - hours: hours value
+    ///   - mins: minutes value
+    ///   - secs: seconds value
     func formattedTrackDuration(hours:Int, mins: Int, secs: Int) -> String? {
         var trackDuration = ""
         
@@ -98,21 +132,10 @@ class RecordingsListViewModel: NSObject {
         return trackDuration
     }
     
+    /// Method to convert the seconds into hours, minutes and seconds
+    /// - Parameter seconds: int representation of the number of seconds
     func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
       return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
-    }
-
-}
-
-class RecordingsViewModel: NSObject {
-    
-    public var recordingName: String?
-    public var trackTime: String?
-    public var trackDurationInSeconds: Int
-
-    init(recordingName :String) {
-        self.recordingName = recordingName
-        self.trackDurationInSeconds = 0
     }
 
 }

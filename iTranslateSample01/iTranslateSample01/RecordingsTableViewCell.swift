@@ -8,23 +8,36 @@
 
 import UIKit
 
+/// RecordingsTableViewCell class to handle the behaviour of the table cell that displays the recorded audio data
 class RecordingsTableViewCell: UITableViewCell {
     
+    /// the label that displays the name of the audio file, without extension
     @IBOutlet weak var recordingNumberLabel: UILabel!
+    
+    /// The UIButton that displays the duration of the audio track
     @IBOutlet weak var recordingTimeButton: UIButton!
+    
+    /// A UIView in the background that can be used to display the progress of the audio track while playing it
     @IBOutlet weak var progressView: UIView!
+    
+    /// An NSLayoutConstraint value to change the width of the progress view
     @IBOutlet weak var progressViewWidth: NSLayoutConstraint!
     
+    /// Override of the awakeFromNib method of the cell
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
+    /// Method to populate the data for the cell from the RecordingsViewModel object
+    /// - Parameter recordsModel: RecordingsViewModel object
     public func setRecordingData(_ recordsModel: RecordingsViewModel) {
         self.recordingNumberLabel?.text = recordsModel.recordingName
         self.recordingTimeButton?.setTitle(recordsModel.trackTime, for: .normal)
     }
     
+    /// Method to start animating the progress view using the width constraint
+    /// - Parameter recordsModel: RecordingsViewModel object
     func startProgress(_ recordsModel: RecordingsViewModel) {
         self.layoutIfNeeded()
         self.layer.removeAllAnimations()

@@ -8,13 +8,16 @@
 
 import UIKit
 
+/// Utility class to handle varied tasks related to the file directory and animation extensions
 class RecorderUtility: NSObject {
     
+    /// Method to get the URL path of the documents directory
     class func getDocumentsDirectory() -> URL? {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
     
+    /// Method to get the index of the last recorded audio file
     class func getLastFileIndex() -> Int {
         var lastFileIndex = 0
         if let fileURLS = RecorderUtility.fetchFileNames(), let lastFileName = fileURLS.last, let fileNumber = lastFileName.components(separatedBy: " ").last {
@@ -23,6 +26,7 @@ class RecorderUtility: NSObject {
         return lastFileIndex
     }
     
+    /// Method to fetch an array of file names of the recorded audio
     class func fetchFileNames() -> [String]? {
         let fileManager = FileManager.default
         if let documentsURL = RecorderUtility.getDocumentsDirectory() {
@@ -42,7 +46,9 @@ class RecorderUtility: NSObject {
         }
         return []
     }
-        
+    
+    /// Method to animate the recordings table view every time it is displayed
+    /// - Parameter tableView: recordings table view instance
     class func animateTable(_ tableView: UITableView?) {
         tableView?.reloadData()
             
@@ -68,12 +74,22 @@ class RecorderUtility: NSObject {
     }
 }
 
+/// An extension to add the pulse animation functionality for the mic button
 extension UIButton {
     
+    /// Overriding the hitTest method to ensure the button is tappable even ehen the alpha value has changed
+    /// - Parameters:
+    ///   - point: a CGPoint value
+    ///   - event: UIEvent instance
     open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         return self.bounds.contains(point) ? self : nil
     }
     
+    /// Method to animate the button with a blink/pulse animation by manipulating the alpha and border of the button
+    /// - Parameters:
+    ///   - enabled: Bool value to check if the animation is enabled
+    ///   - duration: duration of the animation
+    ///   - stopAfter: stopAfter time interval
     func blink(enabled: Bool = true, duration: CFTimeInterval = 1.0, stopAfter: CFTimeInterval = 0.0 ) {
         if enabled {
             
