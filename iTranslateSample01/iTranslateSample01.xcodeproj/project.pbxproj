@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B571B291240A40A300D36558 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571B290240A40A300D36558 /* HomeViewController.swift */; };
+		B59F9B04240CE6D50007A2AC /* RecorderConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F9B03240CE6D50007A2AC /* RecorderConstants.swift */; };
 		B5A746BE240A4C4000573824 /* RecordingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A746BD240A4C4000573824 /* RecordingsTableViewCell.swift */; };
 		B5A746C0240A4F7100573824 /* RecordingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A746BF240A4F7100573824 /* RecordingsViewController.swift */; };
 		B5A746C4240ABEE100573824 /* RecordingsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A746C3240ABEE100573824 /* RecordingsListViewModel.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		B571B290240A40A300D36558 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B59F9B03240CE6D50007A2AC /* RecorderConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderConstants.swift; sourceTree = "<group>"; };
 		B5A746BD240A4C4000573824 /* RecordingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsTableViewCell.swift; sourceTree = "<group>"; };
 		B5A746BF240A4F7100573824 /* RecordingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsViewController.swift; sourceTree = "<group>"; };
 		B5A746C3240ABEE100573824 /* RecordingsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsListViewModel.swift; sourceTree = "<group>"; };
@@ -84,6 +86,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B59F9AFD240CE65C0007A2AC /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				D2D777CA22CDCC1100427FC0 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		B59F9AFE240CE66F0007A2AC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D2D777CE22CDCC1100427FC0 /* Main.storyboard */,
+				D2D777D322CDCC1200427FC0 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		B59F9AFF240CE6820007A2AC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B571B290240A40A300D36558 /* HomeViewController.swift */,
+				B5A746BF240A4F7100573824 /* RecordingsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B59F9B00240CE6990007A2AC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D2D777F822CDCC8100427FC0 /* ViewModel.swift */,
+				B5A746C3240ABEE100573824 /* RecordingsListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B59F9B01240CE6A80007A2AC /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				B5A746BD240A4C4000573824 /* RecordingsTableViewCell.swift */,
+			);
+			path = TableCells;
+			sourceTree = "<group>";
+		};
+		B59F9B02240CE6BB0007A2AC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B5A746C5240B9AB500573824 /* RecorderUtility.swift */,
+				B59F9B03240CE6D50007A2AC /* RecorderConstants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		D2D777BE22CDCC1100427FC0 = {
 			isa = PBXGroup;
 			children = (
@@ -107,17 +161,14 @@
 		D2D777C922CDCC1100427FC0 /* iTranslateSample01 */ = {
 			isa = PBXGroup;
 			children = (
-				D2D777CA22CDCC1100427FC0 /* AppDelegate.swift */,
-				D2D777CE22CDCC1100427FC0 /* Main.storyboard */,
+				B59F9B02240CE6BB0007A2AC /* Utilities */,
+				B59F9B01240CE6A80007A2AC /* TableCells */,
+				B59F9B00240CE6990007A2AC /* ViewModels */,
+				B59F9AFF240CE6820007A2AC /* ViewControllers */,
+				B59F9AFE240CE66F0007A2AC /* Storyboards */,
+				B59F9AFD240CE65C0007A2AC /* AppDelegate */,
 				D2D777D122CDCC1200427FC0 /* Assets.xcassets */,
-				D2D777D322CDCC1200427FC0 /* LaunchScreen.storyboard */,
 				D2D777D622CDCC1200427FC0 /* Info.plist */,
-				D2D777F822CDCC8100427FC0 /* ViewModel.swift */,
-				B571B290240A40A300D36558 /* HomeViewController.swift */,
-				B5A746BD240A4C4000573824 /* RecordingsTableViewCell.swift */,
-				B5A746BF240A4F7100573824 /* RecordingsViewController.swift */,
-				B5A746C3240ABEE100573824 /* RecordingsListViewModel.swift */,
-				B5A746C5240B9AB500573824 /* RecorderUtility.swift */,
 			);
 			path = iTranslateSample01;
 			sourceTree = "<group>";
@@ -276,6 +327,7 @@
 				B5A746C0240A4F7100573824 /* RecordingsViewController.swift in Sources */,
 				B5A746C4240ABEE100573824 /* RecordingsListViewModel.swift in Sources */,
 				B5A746C6240B9AB500573824 /* RecorderUtility.swift in Sources */,
+				B59F9B04240CE6D50007A2AC /* RecorderConstants.swift in Sources */,
 				D2D777CB22CDCC1100427FC0 /* AppDelegate.swift in Sources */,
 				B5A746BE240A4C4000573824 /* RecordingsTableViewCell.swift in Sources */,
 			);
