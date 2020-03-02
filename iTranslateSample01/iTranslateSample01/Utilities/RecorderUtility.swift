@@ -34,7 +34,7 @@ class RecorderUtility: NSObject {
                 // Get the directory contents urls (including subfolders urls)
                 let directoryContents = try fileManager.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil)
 
-                // if you want to filter the directory contents you can do like this:
+                // Filtering by caf extension
                 let cafFiles = directoryContents.filter{ $0.pathExtension == "caf" }
                 var cafFileNames = cafFiles.map{ $0.deletingPathExtension().lastPathComponent }
                 cafFileNames.sort{$0.localizedStandardCompare($1) == .orderedAscending}

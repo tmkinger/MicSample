@@ -120,7 +120,7 @@ class HomeViewController: UIViewController, AVAudioRecorderDelegate {
     /// The IBAction methd called when  the user taps on the Allow button in the mic permission view
     /// - Parameter sender: UIButton instance which initiated this action
     @IBAction func allowMicAccessAction(_ sender: UIButton) {
-        
+        //Request mic permission if not granted
         recordingSession.requestRecordPermission() { [unowned self] allowed in
             DispatchQueue.main.async {
                 if allowed {
@@ -152,6 +152,7 @@ class HomeViewController: UIViewController, AVAudioRecorderDelegate {
     func startRecording() {
         if AVAudioSession.sharedInstance().recordPermission == .granted {
             let newFileNumber = RecorderUtility.getLastFileIndex() + 1
+                //Recording in caf format
             if let audioFilename = RecorderUtility.getDocumentsDirectory()?.appendingPathComponent("Record \(newFileNumber).caf") {
                 
                 let settings = [

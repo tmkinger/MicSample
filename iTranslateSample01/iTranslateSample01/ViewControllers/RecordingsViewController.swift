@@ -27,13 +27,11 @@ class RecordingsViewController: UIViewController, UITableViewDelegate, UITableVi
     /// Override of the viewDidLoad delegate method to customize our view's behaviour
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.recordingsTableView?.isAccessibilityElement = false
 
-        //let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: //#selector(doneButtonAction(_:))) // actionEdit is your Action Method for this button
-        //navigationItem.rightBarButtonItem = doneButtonItem
-
-        
         loadDataSource()
+        
         self.navigationController?.isNavigationBarHidden = false
     }
     
@@ -122,6 +120,8 @@ class RecordingsViewController: UIViewController, UITableViewDelegate, UITableVi
                 tableView.reloadData()
                 completionHandler(true)
             })
+        
+        // Custom delete button for swipe left action
         action.image = UIImage(named: kDeleteButtonImageName)
         action.backgroundColor = .red
         action.isAccessibilityElement = true

@@ -46,6 +46,8 @@ class RecordingsTableViewCell: UITableViewCell {
         self.layer.removeAllAnimations()
         self.progressViewWidth.constant = 0
         self.progressViewWidth.constant = self.contentView.frame.size.width
+        
+        // Animate a UIView by expanding its width for the duration of the track
         UIView.animate(withDuration: TimeInterval(recordsModel.trackDurationInSeconds), animations: {
             self.layoutIfNeeded()
         }, completion: {_ in

@@ -24,7 +24,6 @@
 		D2D777D522CDCC1200427FC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D777D322CDCC1200427FC0 /* LaunchScreen.storyboard */; };
 		D2D777E022CDCC1300427FC0 /* iTranslateSample01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D777DF22CDCC1300427FC0 /* iTranslateSample01Tests.swift */; };
 		D2D777EB22CDCC1300427FC0 /* iTranslateSample01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D777EA22CDCC1300427FC0 /* iTranslateSample01UITests.swift */; };
-		D2D777F922CDCC8100427FC0 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D777F822CDCC8100427FC0 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +64,6 @@
 		D2D777E622CDCC1300427FC0 /* iTranslateSample01UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTranslateSample01UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2D777EA22CDCC1300427FC0 /* iTranslateSample01UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTranslateSample01UITests.swift; sourceTree = "<group>"; };
 		D2D777EC22CDCC1300427FC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D2D777F822CDCC8100427FC0 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +120,6 @@
 		B59F9B00240CE6990007A2AC /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				D2D777F822CDCC8100427FC0 /* ViewModel.swift */,
 				B5A746C3240ABEE100573824 /* RecordingsListViewModel.swift */,
 			);
 			path = ViewModels;
@@ -333,7 +330,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B571B291240A40A300D36558 /* HomeViewController.swift in Sources */,
-				D2D777F922CDCC8100427FC0 /* ViewModel.swift in Sources */,
 				B5A746C0240A4F7100573824 /* RecordingsViewController.swift in Sources */,
 				B5A746C4240ABEE100573824 /* RecordingsListViewModel.swift in Sources */,
 				B5A746C6240B9AB500573824 /* RecorderUtility.swift in Sources */,
