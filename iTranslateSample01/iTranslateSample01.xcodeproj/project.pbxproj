@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		B571B291240A40A300D36558 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571B290240A40A300D36558 /* HomeViewController.swift */; };
 		B59F9B04240CE6D50007A2AC /* RecorderConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F9B03240CE6D50007A2AC /* RecorderConstants.swift */; };
+		B59F9B77240D46FA0007A2AC /* RecorderUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F9B76240D46FA0007A2AC /* RecorderUtilityTests.swift */; };
+		B59F9B78240D47000007A2AC /* RecorderUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A746C5240B9AB500573824 /* RecorderUtility.swift */; };
+		B59F9B86240D58370007A2AC /* RecordingsListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F9B85240D58370007A2AC /* RecordingsListViewModelTests.swift */; };
+		B59F9B87240D58450007A2AC /* RecordingsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A746C3240ABEE100573824 /* RecordingsListViewModel.swift */; };
+		B59F9B89240D93EA0007A2AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D777CE22CDCC1100427FC0 /* Main.storyboard */; };
 		B5A746BE240A4C4000573824 /* RecordingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A746BD240A4C4000573824 /* RecordingsTableViewCell.swift */; };
 		B5A746C0240A4F7100573824 /* RecordingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A746BF240A4F7100573824 /* RecordingsViewController.swift */; };
 		B5A746C4240ABEE100573824 /* RecordingsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A746C3240ABEE100573824 /* RecordingsListViewModel.swift */; };
@@ -42,6 +47,8 @@
 /* Begin PBXFileReference section */
 		B571B290240A40A300D36558 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B59F9B03240CE6D50007A2AC /* RecorderConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderConstants.swift; sourceTree = "<group>"; };
+		B59F9B76240D46FA0007A2AC /* RecorderUtilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderUtilityTests.swift; sourceTree = "<group>"; };
+		B59F9B85240D58370007A2AC /* RecordingsListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsListViewModelTests.swift; sourceTree = "<group>"; };
 		B5A746BD240A4C4000573824 /* RecordingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsTableViewCell.swift; sourceTree = "<group>"; };
 		B5A746BF240A4F7100573824 /* RecordingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsViewController.swift; sourceTree = "<group>"; };
 		B5A746C3240ABEE100573824 /* RecordingsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsListViewModel.swift; sourceTree = "<group>"; };
@@ -177,7 +184,9 @@
 			isa = PBXGroup;
 			children = (
 				D2D777DF22CDCC1300427FC0 /* iTranslateSample01Tests.swift */,
+				B59F9B85240D58370007A2AC /* RecordingsListViewModelTests.swift */,
 				D2D777E122CDCC1300427FC0 /* Info.plist */,
+				B59F9B76240D46FA0007A2AC /* RecorderUtilityTests.swift */,
 			);
 			path = iTranslateSample01Tests;
 			sourceTree = "<group>";
@@ -312,6 +321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B59F9B89240D93EA0007A2AC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +347,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B59F9B86240D58370007A2AC /* RecordingsListViewModelTests.swift in Sources */,
+				B59F9B78240D47000007A2AC /* RecorderUtility.swift in Sources */,
+				B59F9B77240D46FA0007A2AC /* RecorderUtilityTests.swift in Sources */,
 				D2D777E022CDCC1300427FC0 /* iTranslateSample01Tests.swift in Sources */,
+				B59F9B87240D58450007A2AC /* RecordingsListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,7 +562,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XTC37GUKV9;
+				DEVELOPMENT_TEAM = FD2Y87AU5T;
 				INFOPLIST_FILE = iTranslateSample01Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -569,7 +583,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XTC37GUKV9;
+				DEVELOPMENT_TEAM = FD2Y87AU5T;
 				INFOPLIST_FILE = iTranslateSample01Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -588,8 +602,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XTC37GUKV9;
+				DEVELOPMENT_TEAM = FD2Y87AU5T;
 				INFOPLIST_FILE = iTranslateSample01UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -608,8 +623,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XTC37GUKV9;
+				DEVELOPMENT_TEAM = FD2Y87AU5T;
 				INFOPLIST_FILE = iTranslateSample01UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

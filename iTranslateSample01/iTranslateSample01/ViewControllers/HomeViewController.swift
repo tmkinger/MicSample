@@ -32,8 +32,12 @@ class HomeViewController: UIViewController, AVAudioRecorderDelegate {
     /// Override of the viewDidLoad delegate method to customize our view's behaviour
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        self.view.isAccessibilityElement = false
+        self.micPermissionView.isAccessibilityElement = false
+
         self.micPermissionView.isHidden = true
+
+        self.view.sendSubviewToBack(micPermissionView)
         
         recordingSession = AVAudioSession.sharedInstance()
         checkMicPermissionStatus()
@@ -60,6 +64,7 @@ class HomeViewController: UIViewController, AVAudioRecorderDelegate {
                 UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {() -> Void in
                     self.view.backgroundColor = kBackgroundViewColor
                     self.micPermissionView.isHidden = false
+                    self.view.bringSubviewToFront(self.micPermissionView)
                     self.micPermissionView.transform = .identity
                 }, completion: {(finished: Bool) -> Void in
                     // do something once the animation finishes, put it here

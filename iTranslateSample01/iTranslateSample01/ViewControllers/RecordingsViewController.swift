@@ -27,6 +27,11 @@ class RecordingsViewController: UIViewController, UITableViewDelegate, UITableVi
     /// Override of the viewDidLoad delegate method to customize our view's behaviour
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.recordingsTableView?.isAccessibilityElement = false
+
+        //let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: //#selector(doneButtonAction(_:))) // actionEdit is your Action Method for this button
+        //navigationItem.rightBarButtonItem = doneButtonItem
+
         
         loadDataSource()
         self.navigationController?.isNavigationBarHidden = false
@@ -55,7 +60,7 @@ class RecordingsViewController: UIViewController, UITableViewDelegate, UITableVi
     ///   - tableView: UITableView instance
     ///   - indexPath: indexPath of the current cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "RecordingsTableViewCell", for: indexPath) as? RecordingsTableViewCell, let recordsModel = self.recordingsListModel.recordingsViewModelsArray?[indexPath.row] {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: kRecordingsCellIdentifier, for: indexPath) as? RecordingsTableViewCell, let recordsModel = self.recordingsListModel.recordingsViewModelsArray?[indexPath.row] {
             // Configure the cell...
             cell.setRecordingData(recordsModel)
             return cell
@@ -119,6 +124,8 @@ class RecordingsViewController: UIViewController, UITableViewDelegate, UITableVi
             })
         action.image = UIImage(named: kDeleteButtonImageName)
         action.backgroundColor = .red
+        action.isAccessibilityElement = true
+        action.accessibilityValue = "deleteButton"
         let configuration = UISwipeActionsConfiguration(actions: [action])
 
         return configuration
@@ -135,7 +142,7 @@ class RecordingsViewController: UIViewController, UITableViewDelegate, UITableVi
     func playSound(index: Int) {
         
         if audioPlayer != nil, (audioPlayer?.isPlaying)! {
-            audioPlayer?.pause()
+            audioPlayer?.stop()
             audioPlayer = nil
         }
         

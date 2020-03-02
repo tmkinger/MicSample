@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SnK-6z-jJU">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,11 +30,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxr-gf-C3z">
+                                <rect key="frame" x="147" y="393" width="120" height="120"/>
+                                <accessibility key="accessibilityConfiguration" identifier="micButton"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="TYU-li-qHX"/>
+                                    <constraint firstAttribute="width" constant="120" id="qYM-SB-uyG"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="MicImage"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="60"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="micButtonAction:" destination="Ofl-Tq-k2B" eventType="touchUpInside" id="yQy-Hb-UoY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvO-Al-Ie5">
+                                <rect key="frame" x="97" y="593" width="220" height="44"/>
+                                <accessibility key="accessibilityConfiguration" identifier="showRecordingsButton"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="1BI-XB-H8Y"/>
+                                    <constraint firstAttribute="height" constant="44" id="zRU-O3-5ZK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Show Recordings" backgroundImage="RecordingsButton">
+                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Vpg-37-T0x" kind="presentation" identifier="showRecordings" modalPresentationStyle="fullScreen" id="7zJ-mh-I92"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rWb-Xi-rjq">
                                 <rect key="frame" x="49.5" y="209" width="315" height="488"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Microphone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dg-hW-kSH">
                                         <rect key="frame" x="84" y="191" width="147" height="34"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <bool key="isElement" value="NO"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="147" id="KQr-Mo-i7t"/>
                                             <constraint firstAttribute="height" constant="34" id="Tby-zi-HFy"/>
@@ -63,24 +98,31 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFw-V1-hbK">
                                         <rect key="frame" x="47.5" y="347" width="220" height="44"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="allowMicPermissionButton">
+                                            <accessibilityTraits key="traits" button="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="3Cy-Jr-hsJ"/>
                                             <constraint firstAttribute="width" constant="220" id="c6N-pZ-dpB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="Allow" backgroundImage="RecordingsButton">
-                                            <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.098039215686274508" green="0.59607843137254901" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="allowMicAccessAction:" destination="Ofl-Tq-k2B" eventType="touchUpInside" id="7HL-kJ-hqf"/>
-                                            <action selector="showRecordingsAction:" destination="Ofl-Tq-k2B" eventType="touchUpInside" id="Q1K-sg-POQ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wqf-gZ-lPR">
-                                        <rect key="frame" x="119.5" y="423" width="76" height="28"/>
+                                        <rect key="frame" x="121.5" y="423" width="72" height="28"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="micPermissionDeniedButton">
+                                            <accessibilityTraits key="traits" button="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <state key="normal" title="Maybe Later">
-                                            <color key="titleColor" red="0.63137254899999995" green="0.6705882353" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Maybe later">
+                                            <color key="titleColor" red="0.098039215686274508" green="0.59607843137254901" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="maybeLaterAction:" destination="Ofl-Tq-k2B" eventType="touchUpInside" id="j9r-uY-hsq"/>
@@ -109,39 +151,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxr-gf-C3z">
-                                <rect key="frame" x="147" y="393" width="120" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="TYU-li-qHX"/>
-                                    <constraint firstAttribute="width" constant="120" id="qYM-SB-uyG"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="MicImage"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="60"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="micButtonAction:" destination="Ofl-Tq-k2B" eventType="touchUpInside" id="yQy-Hb-UoY"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvO-Al-Ie5">
-                                <rect key="frame" x="97" y="593" width="220" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="1BI-XB-H8Y"/>
-                                    <constraint firstAttribute="height" constant="44" id="zRU-O3-5ZK"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <state key="normal" title="Show Recordings" backgroundImage="RecordingsButton">
-                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Vpg-37-T0x" kind="presentation" identifier="showRecordings" modalPresentationStyle="fullScreen" id="7zJ-mh-I92"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration" identifier="HomeView">
+                            <bool key="isElement" value="NO"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="Kxr-gf-C3z" firstAttribute="centerY" secondItem="cmJ-D7-FoF" secondAttribute="centerY" id="73q-ce-Kiq"/>
                             <constraint firstItem="rWb-Xi-rjq" firstAttribute="centerX" secondItem="cmJ-D7-FoF" secondAttribute="centerX" id="OjM-sn-aeu"/>
@@ -186,18 +200,25 @@
                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIb-Ue-0zG">
                                                     <rect key="frame" x="0.0" y="0.0" width="0.0" height="43.5"/>
                                                     <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <bool key="isElement" value="YES"/>
+                                                    </accessibility>
                                                     <constraints>
                                                         <constraint firstAttribute="width" id="WVS-Fc-EpL"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oe1-rH-V1v">
-                                                    <rect key="frame" x="348" y="6" width="46" height="31.5"/>
-                                                    <state key="normal" title="Button"/>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jA9-44-MXO">
                                                     <rect key="frame" x="57" y="11.5" width="42" height="20.5"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="recordFileName"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpX-qg-T5y">
+                                                    <rect key="frame" x="347.5" y="6" width="46.5" height="31.5"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="recordDurationlabel"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <color key="textColor" red="0.10196078431372549" green="0.59607843140000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -205,18 +226,22 @@
                                                 <constraint firstItem="jA9-44-MXO" firstAttribute="centerY" secondItem="lmh-sB-A44" secondAttribute="centerY" id="7eC-Tn-EYZ"/>
                                                 <constraint firstItem="jA9-44-MXO" firstAttribute="leading" secondItem="lmh-sB-A44" secondAttribute="leading" constant="57" id="Ano-JM-neI"/>
                                                 <constraint firstItem="gIb-Ue-0zG" firstAttribute="top" secondItem="lmh-sB-A44" secondAttribute="top" id="Azh-Me-1P5"/>
+                                                <constraint firstAttribute="trailing" secondItem="UpX-qg-T5y" secondAttribute="trailing" constant="20" id="IMp-h7-wqI"/>
                                                 <constraint firstAttribute="bottom" secondItem="gIb-Ue-0zG" secondAttribute="bottom" id="Imd-c1-zxf"/>
-                                                <constraint firstItem="oe1-rH-V1v" firstAttribute="top" secondItem="lmh-sB-A44" secondAttribute="top" constant="6" id="Tzv-tC-tDd"/>
-                                                <constraint firstAttribute="trailing" secondItem="oe1-rH-V1v" secondAttribute="trailing" constant="20" id="U3C-cK-Cax"/>
-                                                <constraint firstItem="oe1-rH-V1v" firstAttribute="centerY" secondItem="lmh-sB-A44" secondAttribute="centerY" id="pUk-6H-hDt"/>
+                                                <constraint firstItem="UpX-qg-T5y" firstAttribute="top" secondItem="lmh-sB-A44" secondAttribute="top" constant="6" id="JdR-U5-IE7"/>
+                                                <constraint firstItem="UpX-qg-T5y" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jA9-44-MXO" secondAttribute="trailing" constant="8" symbolic="YES" id="gZF-ze-GBh"/>
+                                                <constraint firstItem="UpX-qg-T5y" firstAttribute="centerY" secondItem="lmh-sB-A44" secondAttribute="centerY" id="o4G-OU-RSI"/>
                                                 <constraint firstItem="gIb-Ue-0zG" firstAttribute="leading" secondItem="lmh-sB-A44" secondAttribute="leading" id="vj0-yg-kXJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="recordingCell">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <connections>
                                             <outlet property="progressView" destination="gIb-Ue-0zG" id="YFl-6e-cm4"/>
                                             <outlet property="progressViewWidth" destination="WVS-Fc-EpL" id="DUh-By-80D"/>
                                             <outlet property="recordingNumberLabel" destination="jA9-44-MXO" id="79e-Fq-ful"/>
-                                            <outlet property="recordingTimeButton" destination="oe1-rH-V1v" id="Jzn-fg-YQV"/>
+                                            <outlet property="recordingTimeLabel" destination="UpX-qg-T5y" id="7Am-N9-KG8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -227,10 +252,13 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="RecordingsView">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <viewLayoutGuide key="safeArea" id="CGr-RL-2bv"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recordings" id="VVx-CR-196">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="wLw-gL-Ji9">
+                        <barButtonItem key="rightBarButtonItem" title="Done" width="44" style="plain" id="wLw-gL-Ji9">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="doneButtonAction:" destination="gCM-5R-x6G" id="XJ2-w3-elc"/>
