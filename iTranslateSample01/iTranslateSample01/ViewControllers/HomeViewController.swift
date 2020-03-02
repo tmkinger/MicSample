@@ -58,7 +58,7 @@ class HomeViewController: UIViewController, AVAudioRecorderDelegate {
                 // Display the mic permission view if the permission is not determined
                 micPermissionView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
                 UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {() -> Void in
-                    self.view.backgroundColor = UIColor.init(red: 20/255, green: 34/255, blue: 43/255, alpha: 0.3)
+                    self.view.backgroundColor = kBackgroundViewColor
                     self.micPermissionView.isHidden = false
                     self.micPermissionView.transform = .identity
                 }, completion: {(finished: Bool) -> Void in
@@ -79,22 +79,22 @@ class HomeViewController: UIViewController, AVAudioRecorderDelegate {
     {
         DispatchQueue.main.async
             {
-                var alertText = "Permission Error"
-                var alertButton = "OK"
+                var alertText = kPermissionError
+                var alertButton = kOK
                 var goAction = UIAlertAction(title: alertButton, style: .default, handler: nil)
                 
                 if UIApplication.shared.canOpenURL(URL(string: UIApplication.openSettingsURLString)!)
                 {
-                    alertText = "It looks like your privacy settings are preventing us from accessing your microphone to record audio. You can fix this by doing the following:\n\n1. Touch the Go button below to open the Settings app.\n\n2. Turn the Mic on.\n\n3. Open this app and try again."
+                    alertText = kMicPermissionDemiedMessage
                     
-                    alertButton = "Go to Settings"
+                    alertButton = kGoToSettings
                     
                     goAction = UIAlertAction(title: alertButton, style: .default, handler: {(alert: UIAlertAction!) -> Void in
                         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
                     })
                 }
                 
-                let alert = UIAlertController(title: "Permission Error", message: alertText, preferredStyle: .alert)
+                let alert = UIAlertController(title: kPermissionError, message: alertText, preferredStyle: .alert)
                 alert.addAction(goAction)
                 self.present(alert, animated: true, completion: nil)
         }
@@ -177,8 +177,8 @@ class HomeViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder = nil
 
         if success {
-            let alert = UIAlertController.init(title: "Saved", message: "Recording Saved!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            let alert = UIAlertController.init(title: kSavedTitle, message: kRecordingSaved, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: kOK, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }

@@ -88,7 +88,7 @@ class RecordingsViewController: UIViewController, UITableViewDelegate, UITableVi
     ///   - section: section of the current cell
     func tableView(_ tableView: UITableView, titleForHeaderInSection
                             section: Int) -> String? {
-        return self.recordingsListModel.recordingsViewModelsArray?.count ?? 0 > 0 ? "RECENTLY USED" : "No Recordings available"
+        return self.recordingsListModel.recordingsViewModelsArray?.count ?? 0 > 0 ? kRecentlyUsed : kNoRecordingsAvailable
     }
     
     /// TableView delegate to ascertain whether the user can swipe to use the tableView's editing mode
@@ -117,7 +117,7 @@ class RecordingsViewController: UIViewController, UITableViewDelegate, UITableVi
                 tableView.reloadData()
                 completionHandler(true)
             })
-        action.image = UIImage(named: "DeleteButton")
+        action.image = UIImage(named: kDeleteButtonImageName)
         action.backgroundColor = .red
         let configuration = UISwipeActionsConfiguration(actions: [action])
 
